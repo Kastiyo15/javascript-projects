@@ -1,0 +1,76 @@
+:root {
+  --background-color: rgb(78, 88, 104);
+  --button-color: rgb(220, 20, 60);
+  --button-hovered-color: rgba(220, 20, 60, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.3rem;
+  user-select: none;
+}
+
+html {
+  height: 100%;
+  background-color: var(--background-color);
+}
+
+body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+button {
+  border: none;
+  appearance: none;
+  background-color: var(--button-color);
+  color: white;
+  font-weight: bold;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0.15rem 0.15rem 0.15rem rgba(0, 0, 0, 0.3);
+  user-select: none;
+  transition: ease all 0.2s;
+  height: 100%;
+}
+
+button:hover {
+  background-color: var(--button-hovered-color);
+}
+
+button:active {
+  background-color: var(--background-color);
+  transform: translateY(0.15rem);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  border: 2px solid black;
+}
+
+.title-text,
+.number-text,
+.buttons {
+  margin: 0.5rem;
+}
+
+.title-text {
+  font-weight: bold;
+}
+
+.number-text {
+  font-size: 2rem;
+}
