@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>1. Colour Generator</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="info-panel">
+        <div class="title-text">Colour Generator</div>
+        <div class="mid-line">
+          <div><p id="hexcode-text" title="Toggle Display">HEXCODE</p></div>
+          <div><button id="copy-button" class="fa copy-button" title="Copy to Clipboard">&#xf0ea;</button></div>
+        </div>
+        <div class="button-container">
+          <button id="generate-color-button" title="Generate Colour">
+            Random Colour
+          </button>
+        </div>
+      </div>
+      <div id="color-panel" class="color-panel"></div>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
