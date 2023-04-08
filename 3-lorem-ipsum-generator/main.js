@@ -1,9 +1,16 @@
-const text = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-Aenean ac lectus ullamcorper lorem vestibulum interdum et in augue.
-Quisque venenatis risus id urna dapibus luctus.
-Sed pretium purus vel quam elementum, eu maximus massa tristique.
-Aliquam imperdiet mauris vitae pretium faucibus.
-Phasellus vitae leo ac nulla imperdiet luctus.
+// Get Elements
+const form = document.querySelector(".lorem-form");
+const amount = document.getElementById("amount");
+const minimum = document.getElementById("min-amount");
+const maximum = document.getElementById("max-amount");
+const result = document.querySelector(".lorem-text");
+const word_count = document.getElementById("word-count");
+const letter_count = document.getElementById("letter-count");
+const copy_btn = document.querySelector(".copy-button");
+
+// VARIABLES
+const text = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac lectus ullamcorper lorem vestibulum interdum et in augue. Quisque venenatis risus id urna dapibus luctus.
+Sed pretium purus vel quam elementum, eu maximus massa tristique. Aliquam imperdiet mauris vitae pretium faucibus. Phasellus vitae leo ac nulla imperdiet luctus.
 Ut tincidunt libero aliquet magna aliquam porttitor.
 Aliquam sit amet elit tempus, ultrices dui eu, tincidunt ante.
 Suspendisse congue lectus vitae fermentum accumsan.
@@ -363,64 +370,71 @@ Phasellus vitae neque rutrum, fringilla dolor ac, mattis nunc.
 Ut et nulla a elit euismod ultrices.
 In interdum turpis vel hendrerit laoreet.
 Nullam accumsan dolor vel turpis lobortis luctus.
-Vestibulum nec felis quis mauris efficitur mattis sit amet eu urna.
-Curabitur vitae leo finibus, laoreet dui accumsan, porta velit.
-Vestibulum at risus vitae enim ornare scelerisque id ac tellus.
-Nam sagittis felis tristique, interdum quam ut, elementum sapien.
-Nunc dictum quam vel purus iaculis, luctus posuere urna posuere.
-Nulla condimentum lorem vitae tellus dignissim, in malesuada velit consectetur.
-Phasellus molestie dui eget magna interdum, eu scelerisque risus ullamcorper.
-Nulla pellentesque libero non nulla ultrices, sit amet consequat urna egestas.
-Sed cursus mi ut nulla malesuada, et condimentum diam ullamcorper.
-Aenean sit amet arcu et nisl accumsan dignissim.
-Aliquam at justo ut magna viverra tempor.`;
+Vestibulum nec felis quis mauris efficitur mattis sit amet eu urna. Curabitur vitae leo finibus, laoreet dui accumsan, porta velit. Vestibulum at risus vitae enim ornare scelerisque id ac tellus. Nam sagittis felis tristique, interdum quam ut, elementum sapien. Nunc dictum quam vel purus iaculis, luctus posuere urna posuere. Nulla condimentum lorem vitae tellus dignissim, in malesuada velit consectetur. Phasellus molestie dui eget magna interdum, eu scelerisque risus ullamcorper. Nulla pellentesque libero non nulla ultrices, sit amet consequat urna egestas. Sed cursus mi ut nulla malesuada, et condimentum diam ullamcorper. Aenean sit amet arcu et nisl accumsan dignissim. Aliquam at justo ut magna viverra tempor.`;
 
+// Split text into an array of sentences
 const sentences = text.split(".").map((sen) => {
-  sen.replace("\n", "");
-  console.log(sen);
-  if (!sen.endsWith(".")) {
-    sen += ".";
-  }
-  return sen;
+  return sen.replace(/\r?\n|\r/g, "");
 });
 
-const form = document.querySelector(".lorem-form");
-const amount = document.getElementById("amount");
-const result = document.querySelector(".lorem-text");
+console.log(sentences);
 
+// When page loads, generate a default paragraph
 generateDefaultParagraph();
 
+// ADD EVENT LISTENER
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const value = parseInt(amount.value);
+  const paraValue = parseInt(amount.value);
+  const minValue = parseInt(minimum.value);
+  const maxValue = parseInt(maximum.value);
 
   result.innerText = "";
 
-  if (value > 0) {
-    for (let i = 0; i < value; i++) {
-      let paragraph = generateParagraph();
+  // Catch errors
+  if (
+    catchErrors(paraValue) ||
+    catchErrors(minValue) ||
+    catchErrors(maxValue)
+  ) {
+    return generateError();
+  } else if (minValue > maxValue) {
+    return generateError("Min value is greater than max value!");
+  }
+
+  if (paraValue > 0) {
+    for (let i = 0; i < paraValue; i++) {
+      let paragraph = generateParagraph(minValue, maxValue);
 
       const para = document.createElement("p");
+      const br = document.createElement("br");
       const node = document.createTextNode(paragraph);
-      para.appendChild(node);
 
+      para.appendChild(node);
       result.appendChild(para);
+      result.appendChild(br);
     }
   } else {
     generateDefaultParagraph();
   }
+
+  updateCounters();
 });
 
-function generateParagraph() {
+copy_btn.addEventListener("click", copyText);
+
+// FUNCTIONS
+function generateParagraph(min, max) {
   let paragraph = [];
-  let randNum = Math.floor(4 + Math.random() * 10);
+  let randNum = Math.floor(min + Math.random() * max);
 
   for (let i = 0; i < randNum; i++) {
     let number = Math.floor(Math.random() * sentences.length);
-    paragraph.push(sentences[number]);
+    let sent = sentences[number] + ".";
+    paragraph.push(sent);
   }
 
-  return paragraph.join("");
+  return paragraph.join(" ");
 }
 
 function generateDefaultParagraph() {
@@ -432,4 +446,59 @@ function generateDefaultParagraph() {
   para.appendChild(node);
 
   result.appendChild(para);
+
+  updateCounters();
+}
+
+function copyText() {
+  const paraArray = Array.from(result.children);
+  let string = "";
+
+  paraArray.forEach((para) => {
+    string += para.textContent;
+    string += "\n";
+  });
+
+  navigator.clipboard.writeText(string);
+  alert("Text copied to clipboard");
+}
+
+function catchErrors(value) {
+  if (isNaN(value) || value <= 0) {
+    return true;
+  }
+}
+
+function updateCounters() {
+  let wordCount = getWordCount();
+  let letterCount = getLetterCount();
+
+  word_count.innerText = `Word Count: ${wordCount}`;
+  letter_count.innerText = `Letter Count: ${letterCount}`;
+}
+
+function getWordCount() {
+  const paraArray = Array.from(result.children);
+  let count = 0;
+  paraArray.forEach((para) => {
+    count += para.textContent.split(" ").filter((num) => num != "").length;
+  });
+  return count;
+}
+
+function getLetterCount() {
+  const paraArray = Array.from(result.children);
+  let count = 0;
+  paraArray.forEach((para) => {
+    count += para.textContent.split("").filter((num) => num != "").length;
+  });
+  return count;
+}
+
+function generateError(str = "Please Enter Valid Numbers") {
+  generateDefaultParagraph();
+  updateCounters();
+  let string = "";
+  string = str;
+  return alert(string);
 }

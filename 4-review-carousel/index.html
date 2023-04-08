@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Open Sans font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="main.css" />
+
+    <title>4. Review Carousel</title>
+  </head>
+  <body>
+    <section class="container flex-col">
+      <h2 class="title">Our Reviews</h2>
+      <div class="review-container flex-col">
+        <div class="image-container">
+          <div class="image-background"></div>
+          <img class="image" src="./images/maria-orlova.jpg" />
+        </div>
+        <h3 class="name">Susan Smith</h3>
+        <h4 class="occupation">WEB DEVELOPER</h4>
+        <h4 class="review">
+          Proin sit amet eros at nunc faucibus fermentum vel sed erat. Aenean ac
+          lectus ullamcorper lorem vestibulum interdum et in augue. Donec
+          fermentum dui id mollis consectetur. Quisque vel est a enim viverra
+          imperdiet.
+        </h4>
+        <div class="buttons">
+          <button class="button" id="prev-button" title="Previous"><</button>
+          <button class="button" id="next-button" title="Next">></button>
+        </div>
+        <button class="button" id="surprise" title="Random Review">
+          Surprise Me
+        </button>
+      </div>
+    </section>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

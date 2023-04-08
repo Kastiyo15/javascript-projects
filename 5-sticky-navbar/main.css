@@ -1,0 +1,91 @@
+:root {
+  --background-color: rgb(78, 88, 104);
+  --button-color: rgb(220, 20, 60);
+  --button-hovered-color: rgba(220, 20, 60, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+}
+
+html {
+  height: 100%;
+  background-color: var(--background-color);
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  height: 400rem;
+}
+
+.space {
+  display: flex;
+  position: relative;
+  background-color: rgb(50, 58, 70);
+  height: 20vh;
+  z-index: 9999;
+  box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.15);
+}
+
+.header {
+  display: block;
+  background-color: var(--button-hovered-color);
+  height: 10vh;
+  width: 100%;
+  top: 0;
+  box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.15);
+  position: sticky;
+  transform-origin: top;
+  transition: ease 1s all;
+  z-index: 0;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.sticky {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: end;
+  padding: 0 1rem;
+}
+
+.header-container > a {
+  position: relative;
+  color: white;
+  margin: auto 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.header-container > a:hover {
+  opacity: 0.8;
+}
+
+.header-container > a::after {
+  position: absolute;
+  content: "";
+  background-color: white;
+  left: 0;
+  right: 0;
+  bottom: -0.25rem;
+  height: 0.1rem;
+  transform: scaleX(0);
+  transition: 0.4s;
+}
+
+.header-container > a:hover::after {
+  transform: scaleX(1);
+}
