@@ -26,31 +26,45 @@ body {
 
 .space {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  text-align: center;
   position: relative;
-  background-color: rgb(50, 58, 70);
-  height: 20vh;
+  background-color: rgb(255, 255, 255);
+  min-height: 100vh;
   z-index: 9999;
   box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.15);
+}
+
+.after {
+  display: flex;
+  position: relative;
+  height: 50rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.15);
+}
+
+.after:nth-child(even) {
+  background-color: rgb(50, 58, 70);
+}
+
+.after:nth-child(odd) {
+  background-color: rgb(54, 64, 80);
 }
 
 .header {
   display: block;
   background-color: var(--button-hovered-color);
-  height: 10vh;
+  height: 5rem;
   width: 100%;
   top: 0;
   box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.15);
   position: sticky;
   transform-origin: top;
   transition: ease 1s all;
-  z-index: 0;
+  z-index: 50;
   opacity: 0;
   transform: scale(0);
-}
-
-.sticky {
-  transform: scale(1);
-  opacity: 1;
 }
 
 .header-container {
@@ -89,3 +103,5 @@ body {
 .header-container > a:hover::after {
   transform: scaleX(1);
 }
+
+/* SET HEIGHT OF THE DIV, REMOVE THE WRAPPER, USE THE HEIGHT FOR CALCS */

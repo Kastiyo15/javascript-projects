@@ -1,0 +1,125 @@
+:root {
+  --background-color: rgb(78, 88, 104);
+  --background-color2: rgb(60, 64, 70);
+  --button-color: rgb(220, 20, 60);
+  --button-hovered-color: rgba(220, 20, 60, 0.8);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+}
+
+.hero {
+  display: flex;
+  background-color: var(--background-color);
+  height: 90vh;
+  width: 100%;
+}
+
+.project-1 {
+  position: relative;
+  display: flex;
+  background-color: var(--background-color2);;
+  height: 2000px;
+  width: 100%;
+}
+
+.main-header {
+  display: flex;
+  background-color: var(--button-hovered-color);
+  height: 5rem;
+  width: 100%;
+  box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.15);
+  transition: all 0.5s ease;
+}
+
+.header {
+  display: flex;
+  background-color: var(--button-hovered-color);
+  height: 5rem;
+  width: 100%;
+  box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  opacity: 0;
+  transform-origin: top;
+  transform: scale(0);
+  transition: all 0.5s ease;
+  /*   animation: zoomInDown 1s infinite;
+ */
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: end;
+  padding: 0 1rem;
+}
+
+.header-container > a {
+  position: relative;
+  color: white;
+  margin: auto 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+
+.header-container > a:hover {
+  opacity: 0.8;
+}
+
+.header-container > a:active {
+  opacity: 0.6;
+}
+
+.header-container > a::after {
+  position: absolute;
+  content: "";
+  background-color: white;
+  left: 0;
+  right: 0;
+  bottom: -0.25rem;
+  height: 0.1rem;
+  transform: scaleX(0);
+  transition: all 0.4s ease;
+}
+
+.header-container > a:hover::after {
+  transform: scaleX(1);
+}
+
+.space {
+  display: flex;
+  background-color: lightpink;
+  height: 1000px;
+  width: 100%;
+}
+
+/* .zoomIn {
+  animation-name: zoomIn;
+}
+
+@keyframes zoomInDown {
+  from {
+    opacity: 0;
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+} */

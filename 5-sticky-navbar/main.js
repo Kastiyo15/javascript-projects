@@ -4,7 +4,7 @@ const el_spaceList = document.querySelectorAll(".space"); // list of spaces befo
 const el_lastSpace = el_spaceList[el_spaceList.length - 1]; // get the final space element
 
 // constants which can be changed
-const distance = 200; // number of pixels from bottom of space
+const distance = 100; // number of pixels from bottom of space
 
 // FUNCTIONS
 function updateNavbarWithSpace() {
@@ -99,7 +99,23 @@ function getVariableScale(min, max, gapVariable, space) {
   }
 }
 
+const heroPage = el_spaceList[0];
+const firstPage = document.querySelector(".after");
+
+function shiftFirstSpaceUp() {
+  let distToBtmHero = heroPage.getBoundingClientRect().bottom;
+  let distToTopFirst = firstPage.getBoundingClientRect().top;
+
+  console.log(distToBtmHero, distToTopFirst);
+
+  if (distToTopFirst - distToBtmHero > 0) {
+    firstPage.style.marginTop = `${distToBtmHero - distToTopFirst}px`;
+  }
+}
+
 // ADD EVENT LISTENERS
+window.addEventListener("resize", shiftFirstSpaceUp);
+
 // if there is no space before
 if (el_spaceList.length == 0) {
   setHeaderStyles(el_header, true);
@@ -110,3 +126,5 @@ else {
   setHeaderStyles(el_header, true);
   window.addEventListener("scroll", updateNavbarWithSpace); // Speed adjusted with CSS style transition time
 }
+
+shiftFirstSpaceUp();
