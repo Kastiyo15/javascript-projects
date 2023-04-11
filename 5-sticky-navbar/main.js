@@ -114,7 +114,7 @@ function shiftFirstSpaceUp() {
 }
 
 // ADD EVENT LISTENERS
-window.addEventListener("resize", shiftFirstSpaceUp);
+// .addEventListener("resize", shiftFirstSpaceUp);
 
 // if there is no space before
 if (el_spaceList.length == 0) {
@@ -127,4 +127,4 @@ else {
   window.addEventListener("scroll", updateNavbarWithSpace); // Speed adjusted with CSS style transition time
 }
 
-shiftFirstSpaceUp();
+// shiftFirstSpaceUp();
