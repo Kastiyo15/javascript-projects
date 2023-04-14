@@ -25,6 +25,7 @@
     <!-- Style sheets -->
     <link rel="stylesheet" href="./scss/dropdown-box.css" />
     <link rel="stylesheet" href="./scss/menu-items.css" />
+    <link rel="stylesheet" href="./scss/add-to-cart.css" />
     <link rel="stylesheet" href="./scss/styles.css" />
     <link rel="stylesheet" href="./scss/media-queries.css" />
 
@@ -61,6 +62,10 @@
           <i class="fa-solid fa-martini-glass-citrus fa-xl"></i>
           <h3>Drinks</h3>
         </button>
+        <button class="filter" value="0" id="sale">
+          <i class="fa-solid fa-percent fa-xl"></i>
+          <h3>Sale</h3>
+        </button>
       </div>
 
       <!-- List of filters -->
@@ -69,7 +74,7 @@
         <h3 class="item-counter-container">
           <p>Displaying <span class="item-counter">x</span> items</p>
         </h3>
-        
+
         <div class="dropdown-box">
           <div class="default-text">Sort By</div>
           <i
@@ -87,6 +92,34 @@
 
       <!-- List of available items in a grid, default 1 columns -->
       <div class="items-container"></div>
+
+      <!-- Load more Button -->
+      <button class="load-more"><h3>Load More...</h3></button>
+
+      <!-- Display cost at the bottom -->
+      <div class="add-to-cart-container">
+        <div class="cart-details-container">
+          <div>
+            <p>Selected</p>
+            <h3 class="selected-item-name"></h3>
+          </div>
+
+          <div class="cart-item-volume-container">
+            <div class="cart-volume-price">
+              <p>Price</p>
+              <h3 class="selected-item-price"></h3>
+            </div>
+            <button class="minus-cart-button">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <h3 class="cart-item-counter">1</h3>
+            <button class="plus-cart-button">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <button class="add-to-cart-button"><h3>Add To Cart</h3></button>
+      </div>
     </section>
 
     <script src="./main.js"></script>

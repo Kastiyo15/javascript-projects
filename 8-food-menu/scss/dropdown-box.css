@@ -13,6 +13,15 @@
      -moz-user-select: none;
           user-select: none;
 }
+.dropdown-container .item-counter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.dropdown-container .item-counter-container .item-counter {
+  color: var(--clr-secondary1);
+}
 .dropdown-container .dropdown-box {
   cursor: pointer;
   position: absolute;

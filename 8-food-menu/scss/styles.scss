@@ -3,6 +3,7 @@
   --clr-secondary1: #ed714d;
   --clr-accent1: #d1483d;
   --clr-bg1: #f9f9f9;
+  --clr-bg2: #f2f2f2;
   --clr-subfont: #b3b3b3;
   --box-shadow1: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   --box-shadow1-selected: #ed714d 0px 7px 29px 0px;
@@ -28,9 +29,8 @@
 }
 
 html {
-  height: 100%;
+  min-height: 100%;
   min-width: 100%;
-  background-color: var(--clr-bg1);
   font-family: "Gilroy-Medium", sans-serif;
 }
 
@@ -38,6 +38,7 @@ body {
   position: relative;
   min-height: 100vh;
   width: 100%;
+  background: linear-gradient(0deg, var(--clr-bg2) 0%, var(--clr-bg1) 100%);
 }
 
 h1,
@@ -163,14 +164,32 @@ p {
   }
 }
 
-.item-counter-container {
+.load-more {
+  appearance: none;
+  border: none;
+  background: none;
+  background-color: var(--clr-secondary1);
+  color: var(--clr-primary1);
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: 30rem;
+  margin-inline: auto;
+  margin-top: 3rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  box-shadow: var(--box-shadow1-selected);
 
-  .item-counter {
-    color: var(--clr-secondary1);
+  h3 {
+    margin: 0;
   }
 
+  &:disabled {
+    pointer-events: none;
+    background-color: var(--clr-subfont);
+    box-shadow: var(--box-shadow2);
+    padding: 0.5rem;
+  }
 }

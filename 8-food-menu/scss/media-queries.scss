@@ -39,17 +39,23 @@
       padding: 1rem;
       flex-direction: row;
 
-      .photo{ 
-        width: 8rem;
+      .photo {
+        min-width: 6rem;
         height: 100%;
       }
 
       .item-info {
         margin-left: 1rem;
-        padding-block: 1rem;
+        padding-top: 1rem;
 
         header {
-          font-size: 1.1rem;
+          font-size: 0.9rem;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          .name {
+            margin-bottom: 0;
+          }
         }
 
         .item-text {
@@ -94,6 +100,37 @@
         bottom: -2.5rem;
         text-align: center;
         white-space: nowrap;
+      }
+    }
+  }
+
+  .add-to-cart-container {
+    padding: 1rem;
+
+    p {
+      font-size: 0.8rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    .cart-details-container {
+      flex-direction: column;
+
+      &:first-child {
+        text-align: center;
+      }
+
+      .selected-item-name {
+        margin-bottom: 1rem;
+      }
+
+      .cart-item-volume-container {
+        .cart-item-counter {
+          width: 1rem;
+          margin-inline: 0.5rem;
+        }
       }
     }
   }
