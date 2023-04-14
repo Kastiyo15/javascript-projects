@@ -396,7 +396,7 @@ function addMenuItemSelectedListener() {
       updateSelectDisplay(el_menu_item_list, "item-selected");
 
       // hide add to cart display
-      el_add_to_cart.style.bottom = "-12rem";
+      el_add_to_cart.style.bottom = "-14rem";
     }
   });
 }
@@ -406,7 +406,7 @@ function displayAddToCart(item) {
   // show add to cart display
   item.value == 1
     ? (el_add_to_cart.style.bottom = "0")
-    : (el_add_to_cart.style.bottom = "-12rem");
+    : (el_add_to_cart.style.bottom = "-14rem");
 
   itemVolume = 1; // set quantity to 1
 

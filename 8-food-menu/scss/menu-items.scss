@@ -22,10 +22,10 @@
     border-radius: 2rem;
     padding: 2rem;
     box-shadow: var(--box-shadow1);
-    transform: translate3d(0, 0, 0);
     cursor: pointer;
     transition: all 500ms linear;
     overflow: hidden;
+    transform: scale(0.95);
 
     .photo {
       width: 25rem;
@@ -35,7 +35,7 @@
       border-radius: 0.5rem;
       width: 100%;
       transform: translateZ(0);
-      transition: all 400ms ease-in-out;
+      transition: all 300ms ease-out;
     }
 
     .item-info {
@@ -47,8 +47,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        backface-visibility: hidden;
-        transform: translateZ(0);
 
         &::after {
           content: "";
@@ -72,12 +70,12 @@
     }
 
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1);
     }
   }
 
   .item-selected {
-    transform: scale(1.05);
+    transform: scale(1);
     box-shadow: var(--box-shadow1-selected);
     background-color: var(--clr-secondary1);
 
