@@ -12,7 +12,7 @@
   z-index: 10000;
   box-shadow: 0 -25px 50px rgba(0, 0, 0, 0.35);
   user-select: none;
-  transition: all 600ms cubic-bezier(.25,.75,.5,1) 100ms;
+  transition: all 600ms cubic-bezier(0.25, 0.75, 0.5, 1) 100ms;
 
   button {
     appearance: none;
@@ -55,9 +55,20 @@
         height: 2.5rem;
         aspect-ratio: 1;
         background-color: transparent;
+        color: var(--clr-secondary1);
         border: 0.125rem solid var(--clr-secondary1);
         cursor: pointer;
-        color: var(--clr-secondary1);
+        transition: var(--transition-300ms);
+
+        &:hover {
+          border: 0.125rem solid var(--clr-subfont);
+          color: var(--clr-subfont);
+        }
+
+        &:active {
+          opacity: 0.6;
+          box-shadow: var(--box-shadow2);
+        }
       }
     }
   }
@@ -68,5 +79,15 @@
     padding-block: 1rem;
     border-radius: 2rem;
     cursor: pointer;
+    transition: var(--transition-300ms);
+
+    &:hover {
+      background-color: var(--clr-subfont);
+    }
+
+    &:active {
+      opacity: 0.6;
+      box-shadow: var(--box-shadow2);
+    }
   }
 }

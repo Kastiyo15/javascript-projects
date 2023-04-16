@@ -12,9 +12,12 @@
   --font-light: "Gilroy-Light", sans-serif;
   --font-medium: "Gilroy-Medium", sans-serif;
   --font-bold: "Gilroy-Bold", sans-serif;
+  --transition-300ms: all 300ms ease-out;
 }
 
-* {
+*,
+*::before,
+*::after {
   /*       font-family: "Open Sans", sans-serif;
   font-family: "Roboto", sans-serif;
   font-family: "Gilroy-Bold", sans-serif;
@@ -186,10 +189,194 @@ p {
     margin: 0;
   }
 
+  &:hover {
+    background-color: var(--clr-subfont);
+  }
+
   &:disabled {
     pointer-events: none;
     background-color: var(--clr-subfont);
     box-shadow: var(--box-shadow2);
     padding: 0.5rem;
+  }
+}
+
+.checkout-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-block: 1rem;
+  height: 3rem;
+  width: 100%;
+  aspect-ratio: 1;
+  border: none;
+  background-color: var(--clr-subfont);
+  z-index: 10010;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+  .checkout-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-width: 30rem;
+    width: 100%;
+    appearance: none;
+    border: none;
+
+    h3 {
+      margin: 0;
+      color: white;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-inline: 1rem;
+    }
+
+    i {
+      position: relative;
+      color: white;
+    }
+
+    .checkout-cart-counter {
+      position: absolute;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--clr-accent1);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      font-family: var(--font-bold);
+      font-size: 1rem;
+      width: 1.5rem;
+      right: -0.8rem;
+      bottom: -0.1rem;
+      border: 0.2rem solid var(--clr-subfont);
+      transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    }
+  }
+
+  &:hover {
+    background-color: var(--clr-secondary1);
+
+    .checkout-cart-counter {
+      border: 0.2rem solid var(--clr-secondary1);
+    }
+  }
+}
+
+.checkout-disabled {
+  .checkout-button-container {
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.5;
+  }
+}
+
+// Check out page
+.checkout-screen {
+  padding-block: 5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 30rem;
+  width: 90%;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05rem;
+    text-transform: capitalize;
+    line-height: 1.25;
+  }
+
+  .underline {
+    height: 4px;
+    width: 10rem;
+    border-radius: 2px;
+    margin-inline: auto;
+    background-color: var(--clr-secondary1);
+    margin-bottom: 2rem;
+  }
+
+  .checkout-item {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    max-width: 30rem;
+    width: 100%;
+    margin: 1rem auto;
+    display: grid;
+    padding: 1.25rem 1rem;
+    background: var(--clr-primary1);
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow2);
+
+    h3 {
+      font-size: 1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      // First column (names)
+      &:first-of-type {
+        font-family: var(--font-bold);
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
+    // Top row of headings
+    &:first-of-type {
+      background-color: var(--clr-secondary1);
+
+      h3 {
+        font-family: var(--font-bold);
+        color: white;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .print-button {
+    appearance: none;
+    border: none;
+    background: none;
+    background-color: var(--clr-secondary1);
+    color: var(--clr-primary1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 30rem;
+    margin-inline: auto;
+    margin-top: 3rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    box-shadow: var(--box-shadow2);
+    transition: var(--transition-300ms);
+
+    h3 {
+      margin: 0;
+    }
+
+    &:hover {
+      background-color: var(--clr-subfont);
+    }
+
+    &:active {
+      opacity: 0.6;
+      box-shadow: var(--box-shadow2);
+    }
   }
 }

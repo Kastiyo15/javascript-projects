@@ -55,9 +55,18 @@
   height: 2.5rem;
   aspect-ratio: 1;
   background-color: transparent;
+  color: var(--clr-secondary1);
   border: 0.125rem solid var(--clr-secondary1);
   cursor: pointer;
-  color: var(--clr-secondary1);
+  transition: var(--transition-300ms);
+}
+.add-to-cart-container .cart-details-container .cart-item-volume-container button:hover {
+  border: 0.125rem solid var(--clr-subfont);
+  color: var(--clr-subfont);
+}
+.add-to-cart-container .cart-details-container .cart-item-volume-container button:active {
+  opacity: 0.6;
+  box-shadow: var(--box-shadow2);
 }
 .add-to-cart-container .add-to-cart-button {
   width: 100%;
@@ -65,4 +74,12 @@
   padding-block: 1rem;
   border-radius: 2rem;
   cursor: pointer;
+  transition: var(--transition-300ms);
+}
+.add-to-cart-container .add-to-cart-button:hover {
+  background-color: var(--clr-subfont);
+}
+.add-to-cart-container .add-to-cart-button:active {
+  opacity: 0.6;
+  box-shadow: var(--box-shadow2);
 }/*# sourceMappingURL=add-to-cart.css.map */

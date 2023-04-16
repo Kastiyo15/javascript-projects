@@ -34,6 +34,7 @@
   .items-container .menu-item .photo {
     min-width: 6rem;
     height: 100%;
+    aspect-ratio: 3/2;
   }
   .items-container .menu-item .item-info {
     margin-left: 1rem;
@@ -105,5 +106,14 @@
   .add-to-cart-container .cart-details-container .cart-item-volume-container .cart-item-counter {
     width: 1rem;
     margin-inline: 0.5rem;
+  }
+  .checkout-screen .checkout-list {
+    width: 100%;
+  }
+  .checkout-screen .checkout-item {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+  .checkout-screen .checkout-item h3 {
+    font-size: 0.6rem;
   }
 }/*# sourceMappingURL=media-queries.css.map */
